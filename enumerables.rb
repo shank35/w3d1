@@ -1,3 +1,5 @@
+require "byebug"
+
 class Array
 
     def my_each(&prc)
@@ -62,17 +64,30 @@ class Array
             n.times do 
                 ele = self.shift
                 self.push(ele)
+                # debugger
             end
         end
         self
+    end
+
+
+    def my_join(string="")
+        new_word = ""
+        self.each do |char|
+            new_word += char + string
+        end
+        new_word
     end
 
 end
 
 a = [ "a", "b", "c", "d" ]
 p a.my_rotate         #=> ["b", "c", "d", "a"]
+a = [ "a", "b", "c", "d" ]
 p a.my_rotate(2)      #=> ["c", "d", "a", "b"]
+a = [ "a", "b", "c", "d" ]
 p a.my_rotate(-3)     #=> ["b", "c", "d", "a"]
+a = [ "a", "b", "c", "d" ]
 p a.my_rotate(15)     #=> ["d", "a", "b", "c"]
 
 # p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
